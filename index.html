@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise 💕</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to bottom right, #ffbfd1, #ffe4e1);
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        h1 {
+            margin-top: 350px;
+            font-size: 3em;
+            color: #ff1a75;
+            text-shadow: 3px 3px 10px rgba(255, 0, 127, 0.7);
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 3px 3px 10px rgba(255, 0, 127, 0.7); }
+            100% { text-shadow: 5px 5px 20px rgba(255, 0, 127, 1); }
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            animation: float 6s infinite ease-in-out;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        .button {
+            background: #ff4d88;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            box-shadow: 3px 3px 15px rgba(255, 0, 127, 0.6);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background: #ff1a66;
+            transform: scale(1.1);
+        }
+
+        .hidden-message {
+            display: none;
+            font-size: 1.8em;
+            color: #d10050;
+            margin-top: 20px;
+            animation: bounce 1s ease-in;
+        }
+
+        @keyframes bounce {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>💖 Happy Valentine's Day! 💖</h1>
+        <button class="button" onclick="revealMessage()">Click for a Surprise! 💕</button>
+        <p class="hidden-message" id="message">
+            zindagi ke jin saalo ko maine tumse dur rehkar guzare hai<br/>
+            Ab farz hai mera ke apne pyaar se mai unki kami puri karu<br/><br/>
+            kabhi tera dil na dukhau aisa mai wada to nahi karta par<br/>
+            har ladai ke baad pyaar dugna karunga ye wada karta hu<br/>
+        </p>
+    </div>
+
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "💗";
+            heart.classList.add("heart");
+            document.body.appendChild(heart);
+
+            let x = Math.random() * window.innerWidth;
+            let duration = Math.random() * 5 + 3;
+            let size = Math.random() * 30 + 10;
+
+            heart.style.left = `${x}px`;
+            heart.style.animationDuration = `${duration}s`;
+            heart.style.fontSize = `${size}px`;
+            heart.style.color = ["#ff66a3", "#ff99cc", "#ff4d94", "#ff1a75"][Math.floor(Math.random() * 4)];
+
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createHeart, 300);
+
+        function revealMessage() {
+            document.getElementById("message").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
